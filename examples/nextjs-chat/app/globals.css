@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    @apply h-full;
+  }
+}
+
+/* Smooth scrolling for the message container */
+.messages-scroll {
+  scroll-behavior: smooth;
+}
