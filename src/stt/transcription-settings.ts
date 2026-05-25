@@ -11,6 +11,7 @@ export const transcriptionProviderOptionsSchema = z.object({
 		.enum(["transcribe", "translate", "verbatim", "translit", "codemix"])
 		.nullish(),
 	with_timestamps: z.boolean().nullish(),
+	with_diarization: z.boolean().nullish(),
 });
 
 export type TranscriptionSettings<
@@ -36,6 +37,14 @@ export type TranscriptionSettings<
 	 * Useful for subtitle alignment and audio navigation.
 	 */
 	with_timestamps?: boolean;
+
+	/**
+	 * Enable speaker diarization (speaker identification).
+	 * When enabled, the response includes a `diarized_transcript` with per-speaker segments.
+	 *
+	 * @default false
+	 */
+	with_diarization?: boolean;
 };
 
 export const transcriptionResponseSchema = z.object({
