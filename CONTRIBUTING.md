@@ -9,10 +9,10 @@ git clone https://github.com/rajatsandeepsen/sarvam-ai-sdk.git
 cd sarvam-ai-sdk
 npm install
 ```
-
 ## Build
 
 ```bash
+
 npm run build        # compile TypeScript → dist/
 npm run build:watch  # recompile on file change
 npm run type-check   # type check without emitting

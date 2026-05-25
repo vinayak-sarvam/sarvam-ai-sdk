@@ -16,7 +16,8 @@
 		"check": "biome check",
 		"test": "tsx --env-file=.env test/index.ts",
 		"test:unit": "tsx test/unit/index.ts",
-		"test:integration": "npm test --prefix published-integration-test"
+		"test:integration": "npm test --prefix published-integration-test",
+		"example:next": "cd examples/nextjs-chat && npm install && npm run dev"
 	},
 	"exports": {
 		"./package.json": "./package.json",
