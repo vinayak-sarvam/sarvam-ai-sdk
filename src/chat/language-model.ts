@@ -461,6 +461,12 @@ export class SarvamChatLanguageModel implements LanguageModelV3 {
 									const toolCall = toolCalls[index];
 
 									if (toolCall.name != null && toolCall.arguments != null) {
+										controller.enqueue({
+											type: "tool-input-start",
+											id: toolCall.id,
+											toolName: toolCall.name,
+										});
+
 										// send delta if the argument text has already started:
 										if (toolCall.arguments.length > 0) {
 											controller.enqueue({
@@ -473,6 +479,10 @@ export class SarvamChatLanguageModel implements LanguageModelV3 {
 										// check if tool call is complete
 										// (some providers send the full tool call in one chunk):
 										if (isParsableJson(toolCall.arguments)) {
+											controller.enqueue({
+												type: "tool-input-end",
+												id: toolCall.id,
+											});
 											controller.enqueue({
 												type: "tool-call",
 												toolCallId: toolCall.id,
@@ -510,6 +520,10 @@ export class SarvamChatLanguageModel implements LanguageModelV3 {
 									toolCall.arguments != null &&
 									isParsableJson(toolCall.arguments)
 								) {
+									controller.enqueue({
+										type: "tool-input-end",
+										id: toolCall.id,
+									});
 									controller.enqueue({
 										type: "tool-call",
 										toolCallId: toolCall.id,
