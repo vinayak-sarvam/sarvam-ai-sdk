@@ -1,9 +1,32 @@
 import {
 	type LanguageModelV3Prompt,
+	type LanguageModelV3ToolResultOutput,
 	UnsupportedFunctionalityError,
 } from "@ai-sdk/provider";
 import { convertUint8ArrayToBase64 } from "@ai-sdk/provider-utils";
 import type { SarvamChatPrompt } from "./types";
+
+// The Sarvam (OpenAI-compatible) chat API expects a tool message's `content` to
+// be the plain result string. The AI SDK wraps tool output in a tagged object
+// ({ type: "text", value } | { type: "json", value } | ...), so we unwrap it
+// here instead of serializing the wrapper.
+function getToolResultContent(output: LanguageModelV3ToolResultOutput): string {
+	switch (output.type) {
+		case "text":
+		case "error-text":
+			return output.value;
+		case "json":
+		case "error-json":
+		case "content":
+			return JSON.stringify(output.value);
+		case "execution-denied":
+			return output.reason ?? "Tool execution was denied.";
+		default: {
+			const _exhaustiveCheck: never = output;
+			return JSON.stringify(_exhaustiveCheck);
+		}
+	}
+}
 
 export function convertToChatMessages(
 	prompt: LanguageModelV3Prompt,
@@ -128,7 +151,7 @@ export function convertToChatMessages(
 						messages.push({
 							role: "tool",
 							tool_call_id: part.toolCallId,
-							content: JSON.stringify(part.output),
+							content: getToolResultContent(part.output),
 						});
 					}
 				}
