@@ -15,10 +15,10 @@ if (!process.env.SARVAM_API_KEY?.trim()) {
 	process.exit(1);
 }
 
-console.log("Calling sarvam-30b via AI SDK…");
+console.log("Calling sarvam-105b via AI SDK…");
 
 const { text, usage } = await generateText({
-	model: sarvam("sarvam-30b"),
+	model: sarvam("sarvam-105b"),
 	prompt: 'Reply with exactly one word: "ok"',
 });
 

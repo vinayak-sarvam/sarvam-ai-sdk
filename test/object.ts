@@ -3,7 +3,7 @@ import { z } from "zod";
 import { sarvam } from "./sarvam";
 
 const { object } = await generateObject({
-	model: sarvam("sarvam-30b"),
+	model: sarvam("sarvam-105b"),
 	schemaName: "Recipe",
 	schemaDescription: "A recipe with a name, ingredients and steps",
 	schema: z.object({
@@ -46,7 +46,7 @@ console.log({ text });
 import { tool } from "ai";
 
 const { toolResults } = await generateText({
-	model: sarvam("sarvam-30b"),
+	model: sarvam("sarvam-105b"),
 	tools: {
 		weather: tool({
 			description: "Get the weather in a location",

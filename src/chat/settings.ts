@@ -3,9 +3,12 @@ import { sarvamErrorDataSchema } from "../error";
 
 /**
  * @description Production models
- * @see https://console.sarvam.com/docs/models
+ *
+ * - `sarvam-105b`: Flagship chat model. Successor to the deprecated `sarvam-30b` and `sarvam-m`.
+ *
+ * @see https://docs.sarvam.ai/api/getting-started/models
  */
-export type ChatModelId = "sarvam-30b" | "sarvam-105b" | (string & {});
+export type ChatModelId = "sarvam-105b" | (string & {});
 
 export type ChatSettings = {
 	/**

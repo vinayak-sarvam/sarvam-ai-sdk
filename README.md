@@ -47,7 +47,7 @@ import { sarvam } from 'sarvam-ai-sdk';
 import { generateText } from 'ai';
 
 const { text } = await generateText({
-	model: sarvam("sarvam-30b"),
+	model: sarvam("sarvam-105b"),
     prompt: "Translate this to malayalam: 'Keep cooking, guys'",
 });
 
@@ -148,7 +148,7 @@ import { sarvam } from "sarvam-ai-sdk";
 
 
 const result = await generateText({
-  model: sarvam("sarvam-30b"),
+  model: sarvam("sarvam-105b"),
   tools: {
     weather: tool({
       description: "Get the weather in a location",
@@ -177,7 +177,7 @@ import { sarvam } from "sarvam-ai-sdk";
 import { generateObject } from "ai";
 
 const { object } = await generateObject({
-	model: sarvam("sarvam-30b"),
+	model: sarvam("sarvam-105b"),
 	schemaName: "Recipe",
 	schemaDescription: "A recipe with a name, ingredients and steps",
 	schema: z.object({
@@ -226,7 +226,7 @@ import { sarvam } from "sarvam-ai-sdk";
 
 // Text-to-Text + Chat Completion
 sarvam("sarvam-105b");
-sarvam.languageModel("sarvam-30b");
+sarvam.languageModel("sarvam-105b");
 
 // Text-to-Text + Transliteration
 sarvam.transliterate({ to: "ml-IN", from: "en-IN" });

@@ -7,7 +7,7 @@ import { sarvam } from "./sarvam";
 // ============================================================================
 console.log("=== Test 1: Basic generateText with default model ===");
 const { text: text1 } = await generateText({
-	model: sarvam("sarvam-30b"),
+	model: sarvam("sarvam-105b"),
 	prompt: "What is 2 + 2?",
 });
 console.log({ text: text1 });
@@ -17,7 +17,7 @@ console.log({ text: text1 });
 // ============================================================================
 console.log("\n=== Test 2: generateText with temperature ===");
 const { text: text2 } = await generateText({
-	model: sarvam("sarvam-30b"),
+	model: sarvam("sarvam-105b"),
 	temperature: 0.5,
 	prompt: "Write a creative story about a robot",
 });
@@ -28,7 +28,7 @@ console.log({ text: text2 });
 // ============================================================================
 console.log("\n=== Test 3: generateText with maxTokens ===");
 const { text: text3 } = await generateText({
-	model: sarvam("sarvam-30b"),
+	model: sarvam("sarvam-105b"),
 	maxTokens: 100,
 	prompt: "Explain quantum computing in simple terms",
 });
@@ -39,7 +39,7 @@ console.log({ text: text3 });
 // ============================================================================
 console.log("\n=== Test 4: generateText with topP ===");
 const { text: text4 } = await generateText({
-	model: sarvam("sarvam-30b"),
+	model: sarvam("sarvam-105b"),
 	topP: 0.9,
 	prompt: "What is artificial intelligence?",
 });
@@ -50,7 +50,7 @@ console.log({ text: text4 });
 // ============================================================================
 console.log("\n=== Test 5: generateText with frequencyPenalty ===");
 const { text: text5 } = await generateText({
-	model: sarvam("sarvam-30b"),
+	model: sarvam("sarvam-105b"),
 	frequencyPenalty: 0.5,
 	prompt: "List the colors of the rainbow",
 });
@@ -61,7 +61,7 @@ console.log({ text: text5 });
 // ============================================================================
 console.log("\n=== Test 6: generateText with presencePenalty ===");
 const { text: text6 } = await generateText({
-	model: sarvam("sarvam-30b"),
+	model: sarvam("sarvam-105b"),
 	presencePenalty: 0.3,
 	prompt: "Tell me about machine learning",
 });
@@ -72,7 +72,7 @@ console.log({ text: text6 });
 // ============================================================================
 console.log("\n=== Test 7: generateText with stopSequences ===");
 const { text: text7 } = await generateText({
-	model: sarvam("sarvam-30b"),
+	model: sarvam("sarvam-105b"),
 	stopSequences: ["END", "\n"],
 	prompt: "Count from 1 to 5",
 });
@@ -83,7 +83,7 @@ console.log({ text: text7 });
 // ============================================================================
 console.log("\n=== Test 8: generateText with system prompt ===");
 const { text: text8 } = await generateText({
-	model: sarvam("sarvam-30b"),
+	model: sarvam("sarvam-105b"),
 	system: "You are a helpful AI assistant that speaks in rhymes.",
 	prompt: "What is the weather like?",
 });
@@ -94,7 +94,7 @@ console.log({ text: text8 });
 // ============================================================================
 console.log("\n=== Test 9: generateText with messages array ===");
 const { text: text9 } = await generateText({
-	model: sarvam("sarvam-30b"),
+	model: sarvam("sarvam-105b"),
 	system: "You are a helpful assistant.",
 	messages: [
 		{
@@ -118,7 +118,7 @@ console.log({ text: text9 });
 // ============================================================================
 console.log("\n=== Test 10: generateText with reasoning_effort ===");
 const { text: text10 } = await generateText({
-	model: sarvam("sarvam-30b", { reasoning_effort: "high" }),
+	model: sarvam("sarvam-105b", { reasoning_effort: "high" }),
 	prompt:
 		"Solve this logic puzzle: If all birds can fly, and penguins are birds, can penguins fly?",
 });
@@ -129,7 +129,7 @@ console.log({ text: text10 });
 // ============================================================================
 console.log("\n=== Test 11: generateText with wiki_grounding ===");
 const { text: text11 } = await generateText({
-	model: sarvam("sarvam-30b", { wiki_grounding: true }),
+	model: sarvam("sarvam-105b", { wiki_grounding: true }),
 	prompt: "Who is the current Prime Minister of India?",
 });
 console.log({ text: text11 });
@@ -139,7 +139,7 @@ console.log({ text: text11 });
 // ============================================================================
 console.log("\n=== Test 12: generateText with n (multiple completions) ===");
 const { text: text12 } = await generateText({
-	model: sarvam("sarvam-30b", { n: 2 }),
+	model: sarvam("sarvam-105b", { n: 2 }),
 	prompt: "Complete this sentence: The future of AI is...",
 });
 console.log({ text: text12 });
@@ -149,7 +149,7 @@ console.log({ text: text12 });
 // ============================================================================
 console.log("\n=== Test 13: generateText with seed ===");
 const { text: text13 } = await generateText({
-	model: sarvam("sarvam-30b"),
+	model: sarvam("sarvam-105b"),
 	seed: 42,
 	prompt: "Generate a random story",
 });
@@ -160,7 +160,7 @@ console.log({ text: text13 });
 // ============================================================================
 console.log("\n=== Test 14: generateText with JSON response format ===");
 const { text: text14 } = await generateText({
-	model: sarvam("sarvam-30b"),
+	model: sarvam("sarvam-105b"),
 	prompt: 'Return your response as JSON with keys "name" and "age".',
 	responseFormat: { type: "json" },
 });
@@ -171,7 +171,7 @@ console.log({ text: text14 });
 // ============================================================================
 console.log("\n=== Test 15: Using provider.chat() method ===");
 const { text: text15 } = await generateText({
-	model: sarvam.chat("sarvam-30b"),
+	model: sarvam.chat("sarvam-105b"),
 	prompt: "What is the capital of France?",
 });
 console.log({ text: text15 });
@@ -181,7 +181,7 @@ console.log({ text: text15 });
 // ============================================================================
 console.log("\n=== Test 16: Using provider.languageModel() method ===");
 const { text: text16 } = await generateText({
-	model: sarvam.languageModel("sarvam-30b"),
+	model: sarvam.languageModel("sarvam-105b"),
 	prompt: "What is the tallest mountain in the world?",
 });
 console.log({ text: text16 });
@@ -191,7 +191,7 @@ console.log({ text: text16 });
 // ============================================================================
 console.log("\n=== Test 17: generateText with multiple settings ===");
 const { text: text17 } = await generateText({
-	model: sarvam("sarvam-30b", {
+	model: sarvam("sarvam-105b", {
 		reasoning_effort: "medium",
 		wiki_grounding: true,
 	}),
@@ -208,7 +208,7 @@ console.log({ text: text17 });
 // ============================================================================
 console.log("\n=== Test 18: streamText - basic streaming ===");
 const { textStream } = streamText({
-	model: sarvam("sarvam-30b"),
+	model: sarvam("sarvam-105b"),
 	prompt: "Write a short poem about nature",
 });
 
@@ -316,7 +316,7 @@ if (toolCalls && toolCalls.length > 0) {
 // ============================================================================
 console.log("\n=== Test 20: streamText with system message ===");
 const { textStream: textStream20 } = streamText({
-	model: sarvam("sarvam-30b"),
+	model: sarvam("sarvam-105b"),
 	system: "You are a pirate. Respond to everything in pirate speak.",
 	prompt: "How do you navigate the seas?",
 });
@@ -330,7 +330,7 @@ for await (const textPart of textStream20) {
 // ============================================================================
 console.log("\n=== Test 21: streamText with messages ===");
 const { textStream: textStream21 } = streamText({
-	model: sarvam("sarvam-30b"),
+	model: sarvam("sarvam-105b"),
 	messages: [
 		{
 			role: "user",
@@ -356,7 +356,7 @@ for await (const textPart of textStream21) {
 // ============================================================================
 console.log("\n=== Test 22: streamText with all parameters ===");
 const { textStream: textStream22 } = streamText({
-	model: sarvam("sarvam-30b", { reasoning_effort: "high" }),
+	model: sarvam("sarvam-105b", { reasoning_effort: "high" }),
 	temperature: 0.8,
 	maxTokens: 150,
 	topP: 0.9,
@@ -377,7 +377,7 @@ for await (const textPart of textStream22) {
 console.log("\n=== Test 23: generateText with AbortSignal ===");
 const controller = new AbortController();
 const { text: text23 } = await generateText({
-	model: sarvam("sarvam-30b"),
+	model: sarvam("sarvam-105b"),
 	prompt: "Write a long essay about the history of computing",
 	abortSignal: controller.signal,
 });
@@ -388,7 +388,7 @@ console.log({ text: text23 });
 // ============================================================================
 console.log("\n=== Test 24: generateText with custom headers ===");
 const { text: text24 } = await generateText({
-	model: sarvam("sarvam-30b"),
+	model: sarvam("sarvam-105b"),
 	prompt: "What is machine learning?",
 	headers: {
 		"X-Custom-Header": "custom-value",
