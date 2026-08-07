@@ -22,7 +22,7 @@ export type SarvamProvider = {
 	 * Creates a model for text generation.
 	 * @example
 	 * 	const { text } = await generateText({
-	 * 		model: sarvam("sarvam-30b"),
+	 * 		model: sarvam("sarvam-105b"),
 	 * 		prompt: "Translate this to malayalam: 'Keep cooking, guys'",
 	 * 	});
 	 */
@@ -33,7 +33,7 @@ export type SarvamProvider = {
 	 *
 	 * @example
 	 * 	const { text } = await generateText({
-	 * 		model: sarvam.languageModel("sarvam-30b"),
+	 * 		model: sarvam.languageModel("sarvam-105b"),
 	 * 		prompt: "Translate this to malayalam: 'Keep cooking, guys'",
 	 * 	});
 	 */
@@ -44,7 +44,7 @@ export type SarvamProvider = {
 	 *
 	 * @example
 	 * 	const { text } = await generateText({
-	 * 		model: sarvam.chat("sarvam-30b"),
+	 * 		model: sarvam.chat("sarvam-105b"),
 	 * 		prompt: "Translate this to malayalam: 'Keep cooking, guys'",
 	 * 	});
 	 */
