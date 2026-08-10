@@ -69,6 +69,8 @@ export const speechOptionsSchema = z
 	.object({
 		speaker: SpeakerSchema,
 		pace: z.number().min(0.5).max(2.0),
+		pitch: z.number().min(-0.75).max(0.75),
+		loudness: z.number().min(0.3).max(3.0),
 		speech_sample_rate: z.union([
 			z.literal(8000),
 			z.literal(16000),
@@ -106,6 +108,24 @@ export type SpeechSettings<
 	 * @example 2.0 (Faster speech)
 	 */
 	pace?: number;
+
+	/**
+	 * Controls the pitch of the audio. Range: `-0.75 - 0.75`
+	 *
+	 * @default 0.0
+	 * @example -0.75 (Lower pitch)
+	 * @example 0.75 (Higher pitch)
+	 */
+	pitch?: number;
+
+	/**
+	 * Controls the loudness/volume of the audio. Range: `0.3 - 3.0`
+	 *
+	 * @default 1.0
+	 * @example 0.3 (Quieter)
+	 * @example 3.0 (Louder)
+	 */
+	loudness?: number;
 
 	/**
 	 * Specifies the sample rate of the output audio.

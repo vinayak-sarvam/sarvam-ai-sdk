@@ -216,18 +216,20 @@ export class SarvamChatLanguageModel implements LanguageModelV3 {
 		// Add tool calls if present
 		if (choice.message.tool_calls && choice.message.tool_calls.length > 0) {
 			for (const toolCall of choice.message.tool_calls) {
-				if (isJSON)
+				if (isJSON) {
+					// JSON mode uses a hidden tool call internally — surface the result as plain text
 					content.push({
 						type: "text",
 						text: toolCall.function.arguments,
 					});
-
-				content.push({
-					type: "tool-call",
-					toolCallId: toolCall.id ?? (this.config.generateId ?? generateId)(),
-					toolName: toolCall.function.name,
-					input: toolCall.function.arguments,
-				});
+				} else {
+					content.push({
+						type: "tool-call",
+						toolCallId: toolCall.id ?? (this.config.generateId ?? generateId)(),
+						toolName: toolCall.function.name,
+						input: toolCall.function.arguments,
+					});
+				}
 			}
 		}
 
