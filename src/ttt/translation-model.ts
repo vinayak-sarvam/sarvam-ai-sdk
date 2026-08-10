@@ -83,11 +83,15 @@ export class SarvamTranslationModel implements LanguageModelV3 {
 				);
 		}
 
+		// `from`/`to` are the SDK-facing setting names; the API expects
+		// source_language_code/target_language_code, so drop them from the body.
+		const { from: _from, to: _to, ...passthrough } = sarvamOptions;
+
 		return {
 			args: {
 				input: convertPromptToInput(prompt),
 				model: this.modelId,
-				...sarvamOptions,
+				...passthrough,
 				source_language_code: from,
 				target_language_code: to,
 			},

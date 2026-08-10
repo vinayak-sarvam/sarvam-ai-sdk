@@ -72,10 +72,14 @@ export class SarvamTransliterateModel implements LanguageModelV3 {
 					);
 		}
 
+		// `from`/`to` are the SDK-facing setting names; the API expects
+		// source_language_code/target_language_code, so drop them from the body.
+		const { from: _from, to: _to, ...passthrough } = sarvamOptions;
+
 		return {
 			args: {
 				input: convertPromptToInput(prompt),
-				...sarvamOptions,
+				...passthrough,
 				source_language_code: from,
 				target_language_code: to,
 				spoken_form_numerals_language: sarvamOptions.spoken_form
