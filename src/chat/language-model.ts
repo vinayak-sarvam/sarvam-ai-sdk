@@ -332,6 +332,11 @@ export class SarvamChatLanguageModel implements LanguageModelV3 {
 		};
 		let isFirstChunk = true;
 
+		// The AI SDK only records a text delta into the final message when it is
+		// bracketed by a matching text-start/text-end pair.
+		const TEXT_ID = "text-0";
+		let isTextOpen = false;
+
 		return {
 			stream: response.pipeThrough(
 				new TransformStream<
@@ -417,9 +422,13 @@ export class SarvamChatLanguageModel implements LanguageModelV3 {
 
 						// Handle text content
 						if (delta.content != null && delta.content.length > 0) {
+							if (!isTextOpen) {
+								isTextOpen = true;
+								controller.enqueue({ type: "text-start", id: TEXT_ID });
+							}
 							controller.enqueue({
 								type: "text-delta",
-								id: "text-0",
+								id: TEXT_ID,
 								delta: delta.content,
 							});
 						}
@@ -523,6 +532,9 @@ export class SarvamChatLanguageModel implements LanguageModelV3 {
 					},
 
 					flush(controller) {
+						if (isTextOpen) {
+							controller.enqueue({ type: "text-end", id: TEXT_ID });
+						}
 						controller.enqueue({
 							type: "finish",
 							finishReason,
