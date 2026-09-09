@@ -2,7 +2,7 @@
 	"name": "sarvam-ai-sdk",
 	"type": "module",
 	"description": "Sarvam provider support for Vercel's AI-SDK",
-	"version": "0.4.3",
+	"version": "0.4.4",
 	"main": "./dist/index.js",
 	"module": "./dist/index.js",
 	"types": "./dist/index.d.ts",
@@ -24,6 +24,11 @@
 			"types": "./dist/index.d.ts",
 			"import": "./dist/index.js",
 			"default": "./dist/index.js"
+		},
+		"./info": {
+			"types": "./dist/info.d.ts",
+			"import": "./dist/info.js",
+			"default": "./dist/info.js"
 		}
 	},
 	"dependencies": {
@@ -64,6 +69,7 @@
 	"keywords": [
 		"ai",
 		"ai-sdk",
+		"eve",
 		"vercel",
 		"sarvam",
 		"india",

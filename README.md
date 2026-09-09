@@ -202,6 +202,21 @@ const { output } = await generateText({
 console.log(output);
 ```
 
+## EVE Agents
+
+Build durable agents with Vercel's Eve Framework.
+
+```ts
+import { defineAgent } from "eve";
+import { sarvam } from "sarvam-ai-sdk";
+import { SarvamChatModelInfo } from "sarvam-ai-sdk/info";
+
+export default defineAgent({
+	model: sarvam("sarvam-105b"),
+	modelContextWindowTokens: SarvamChatModelInfo["sarvam-105b"].context_window,
+});
+```
+
 ## All APIs
 
 ```ts
@@ -234,4 +249,8 @@ sarvam.transcription("saaras:v4");
 
 ## Documentation
 
-Please check out the **[Sarvam provider documentation](https://docs.sarvam.ai/api/integration/vercel-ai-sdk)** and **[Sarvam API documentation](https://docs.sarvam.ai)** for more information.
+- [Sarvam provider documentation](https://docs.sarvam.ai/api/integration/vercel-ai-sdk)
+- [Sarvam API documentation](https://docs.sarvam.ai)
+- [AI-SDK documentation](https://ai-sdk.dev/docs/foundations/providers-and-models) 
+- [Sarvam AI-SDK Provider](https://ai-sdk.dev/providers/community-providers/sarvam) 
+- [Eve agent configuration](https://eve.dev/docs/agent-config)
