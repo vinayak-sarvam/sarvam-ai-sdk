@@ -402,21 +402,39 @@ export class SarvamChatLanguageModel implements LanguageModelV4 {
 
 						// Handle reasoning
 						if (delta.reasoning != null && delta.reasoning.length > 0) {
-							// V2 uses reasoning-start, reasoning-delta, reasoning-end pattern
-							// For simplicity, we emit as a single reasoning-delta
+							controller.enqueue({
+								type: "reasoning-start",
+								id: "reasoning-0",
+							});
+
 							controller.enqueue({
 								type: "reasoning-delta",
 								id: "reasoning-0",
 								delta: delta.reasoning,
+							});
+
+							controller.enqueue({
+								type: "reasoning-end",
+								id: "reasoning-0",
 							});
 						}
 
 						// Handle text content
 						if (delta.content != null && delta.content.length > 0) {
 							controller.enqueue({
+								type: "text-start",
+								id: "text-0",
+							});
+
+							controller.enqueue({
 								type: "text-delta",
 								id: "text-0",
 								delta: delta.content,
+							});
+
+							controller.enqueue({
+								type: "text-end",
+								id: "text-0",
 							});
 						}
 
